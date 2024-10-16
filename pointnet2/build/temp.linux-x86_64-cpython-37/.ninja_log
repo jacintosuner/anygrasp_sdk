@@ -1,0 +1,12 @@
+# ninja log v5
+0	6414	1729006705064150096	/home/jacinto/robot-grasp/third_party/anygrasp_sdk/pointnet2/build/temp.linux-x86_64-cpython-37/pointnet2/_ext_src/src/ball_query_gpu.o	3e708e367f6530b
+0	10340	1729006708984250079	/home/jacinto/robot-grasp/third_party/anygrasp_sdk/pointnet2/build/temp.linux-x86_64-cpython-37/pointnet2/_ext_src/src/ball_query.o	433e68c4c78aa791
+6415	18816	1729006717452466082	/home/jacinto/robot-grasp/third_party/anygrasp_sdk/pointnet2/build/temp.linux-x86_64-cpython-37/pointnet2/_ext_src/src/bindings.o	ef2435ecbb76026b
+10344	20584	1729006719228511386	/home/jacinto/robot-grasp/third_party/anygrasp_sdk/pointnet2/build/temp.linux-x86_64-cpython-37/pointnet2/_ext_src/src/cylinder_query.o	864be3f45c371eed
+18816	25235	1729006723880630060	/home/jacinto/robot-grasp/third_party/anygrasp_sdk/pointnet2/build/temp.linux-x86_64-cpython-37/pointnet2/_ext_src/src/cylinder_query_gpu.o	1e68d7ae40f5be9d
+20585	30916	1729006729560774966	/home/jacinto/robot-grasp/third_party/anygrasp_sdk/pointnet2/build/temp.linux-x86_64-cpython-37/pointnet2/_ext_src/src/group_points.o	70106174b4802309
+25235	31627	1729006730272793131	/home/jacinto/robot-grasp/third_party/anygrasp_sdk/pointnet2/build/temp.linux-x86_64-cpython-37/pointnet2/_ext_src/src/group_points_gpu.o	ebdb9e10c2bf6059
+31627	38060	1729006736708957335	/home/jacinto/robot-grasp/third_party/anygrasp_sdk/pointnet2/build/temp.linux-x86_64-cpython-37/pointnet2/_ext_src/src/interpolate_gpu.o	2f53cda44af3b80d
+30917	41187	1729006739833037044	/home/jacinto/robot-grasp/third_party/anygrasp_sdk/pointnet2/build/temp.linux-x86_64-cpython-37/pointnet2/_ext_src/src/interpolate.o	59e0d778ca2db323
+41189	47828	1729006746473206470	/home/jacinto/robot-grasp/third_party/anygrasp_sdk/pointnet2/build/temp.linux-x86_64-cpython-37/pointnet2/_ext_src/src/sampling_gpu.o	770166933a631286
+38060	48349	1729006746993219739	/home/jacinto/robot-grasp/third_party/anygrasp_sdk/pointnet2/build/temp.linux-x86_64-cpython-37/pointnet2/_ext_src/src/sampling.o	4c0a1444df543750

@@ -14,6 +14,8 @@ parser.add_argument('--max_gripper_width', type=float, default=0.1, help='Maximu
 parser.add_argument('--gripper_height', type=float, default=0.03, help='Gripper height')
 parser.add_argument('--top_down_grasp', action='store_true', help='Output top-down grasps.')
 parser.add_argument('--debug', action='store_true', help='Enable debug mode')
+parser.add_argument('--rgbdk_file_path', default='', help='Path to the RGB-D + K (camera matrix) data directory')
+parser.add_argument('--output_dir', default='./output', help='Output directory')
 cfgs = parser.parse_args()
 cfgs.max_gripper_width = max(0, min(0.1, cfgs.max_gripper_width))
 
@@ -21,13 +23,25 @@ def demo(data_dir):
     anygrasp = AnyGrasp(cfgs)
     anygrasp.load_net()
 
-    # get data
-    colors = np.array(Image.open(os.path.join(data_dir, 'color.png')), dtype=np.float32) / 255.0
-    depths = np.array(Image.open(os.path.join(data_dir, 'depth.png')))
-    # get camera intrinsics
-    fx, fy = 927.17, 927.37
-    cx, cy = 651.32, 349.62
-    scale = 1000.0
+    if not cfgs.rgbdk_file_path:
+        # get data
+        colors = np.array(Image.open(os.path.join(data_dir, 'color.png')), dtype=np.float32) / 255.0
+        depths = np.array(Image.open(os.path.join(data_dir, 'depth.png')))
+        # get camera intrinsics
+        fx, fy = 927.17, 927.37
+        cx, cy = 651.32, 349.62
+    
+    else:
+        # Load the RGB-DK numpy file
+        data = np.load(cfgs.rgbdk_file_path, allow_pickle=True)
+        colors = np.array(data.item().get('rgb'), dtype=np.float32) / 255.0
+        depths = np.array(data.item().get('depth'))
+        fx, fy = data.item().get('K')[0, 0], data.item().get('K')[1, 1]
+        cx, cy = data.item().get('K')[0, 2], data.item().get('K')[1, 2]
+        print(fx, fy, cx, cy)
+
+
+
     # set workspace to filter output grasps
     xmin, xmax = -0.19, 0.12
     ymin, ymax = 0.02, 0.15
@@ -35,6 +49,7 @@ def demo(data_dir):
     lims = [xmin, xmax, ymin, ymax, zmin, zmax]
 
     # get point cloud
+    scale = 1000.0
     xmap, ymap = np.arange(depths.shape[1]), np.arange(depths.shape[0])
     xmap, ymap = np.meshgrid(xmap, ymap)
     points_z = depths / scale

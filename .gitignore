@@ -6,3 +6,6 @@
 .DS_Store
 .TimeRecord
 license
+log/*
+grasp_detection/log/checkpoint_detection.tar
+grasp_tracking/log/checkpoint_tracking.tar
